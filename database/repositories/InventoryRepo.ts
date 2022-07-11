@@ -21,6 +21,10 @@ class InventoryRepo extends PaginateRepo<iInventoryEntity> {
         return ( await this.findAll( {} ) );
     };
 
+    async getAllInventoriesPageWise( skipCount: number, limitCount: number ) {
+        return ( await this.findAllPageWise( {}, skipCount || SKIP_COUNT, limitCount || LIMIT_COUNT ) );
+    }
+
     async getInventoriesByProductId( productId: string ) {
         return ( await this.findOne({ productId: productId }) );
     };
